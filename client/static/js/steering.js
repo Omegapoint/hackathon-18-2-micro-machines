@@ -5,9 +5,6 @@ let down = false
 let left = false
 let right = false
 
-let xVelocity = 0
-let yVelocity = 0
-
 document.addEventListener('keydown', keydown)
 document.addEventListener('keyup', keyup)
 
@@ -58,37 +55,28 @@ function updateVelocity() {
 
 function drive() {
   if (up) {
-    yVelocity--
+    myCar.speed++
+    myCar.speed = myCar.speed > myCar.maxSpeed ? myCar.maxSpeed : myCar.speed
   }
 
   if (down) {
-    yVelocity++
+    myCar.speed -= myCar.brake
+    myCar.speed = myCar.speed < 0 ? 0 : myCar.speed
   }
 
   if (left) {
-    xVelocity--
+    myCar.rotation += Math.PI * myCar.turn
   }
 
   if (right) {
-    xVelocity++
+    myCar.rotation -= Math.PI * myCar.turn
   }
 }
 
 function friction() {
 
   if (!up && !down) {
-    if (yVelocity < 0) {
-      yVelocity++
-    } else if (yVelocity > 0) {
-      yVelocity--
-    }
-  }
-
-  if (!left && !right) {
-    if (xVelocity < 0) {
-      xVelocity++
-    } else if (xVelocity > 0) {
-      xVelocity--
-    }
+    myCar.speed--
+    myCar.speed = myCar.speed < 0 ? 0 : myCar.speed
   }
 }
