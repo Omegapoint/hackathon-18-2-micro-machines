@@ -1,14 +1,18 @@
+let board
+
 
 // Create WebSocket connection.
 const socket = new WebSocket('ws://192.168.43.183:8080/micromachines/mm')
 
 // Connection opened
 socket.addEventListener('open', function (event)  {
+  board = new Board()
   startMovingCar()
 })
 
 // Listen for messages
 socket.addEventListener('message', function (event) {
+  const message = JSON.parse(event.data)
   const car = JSON.parse(event.data)
   otherCars[0].x = car.x
   otherCars[0].y = car.y

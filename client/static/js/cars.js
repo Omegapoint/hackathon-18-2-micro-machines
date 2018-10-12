@@ -26,7 +26,7 @@ function startMovingCar() {
 
 function moveCar () {
   const polarDiff = math.complex({r: myCar.speed, phi: myCar.rotation})
-  console.log(polarDiff)
+  // console.log(polarDiff)
   myCar.x += polarDiff.re
   myCar.x = myCar.x < myCar.image.width ? myCar.image.width : myCar.x
   myCar.x = myCar.x > canvas.width - myCar.image.width ? canvas.width - myCar.image.width : myCar.x
