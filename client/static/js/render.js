@@ -22,9 +22,10 @@ function renderCars () {
 }
 
 function renderObjects() {
-  board.getObjects().forEach(obj => {
-    drawSquare(obj.x, obj.y)
-  })
+  // board.getObjects().forEach(obj => {
+  //   drawSquare(obj.x, obj.y)
+  // })
+  drawBoard()
 }
 
 function drawCar(car) {
@@ -35,11 +36,23 @@ function drawSquare(x, y) {
   ctx.fillRect(x, y, 10, 10)
 }
 
-function drawImage(image, x, y, rotation) {
+function drawImage(image, x, y, rotation=0) {
   ctx.save()
   ctx.translate(x, y)
   ctx.rotate(-rotation)
   ctx.translate(-x, -y)
   ctx.drawImage(image, x - (image.width / 2), y - (image.height / 2))
   ctx.restore()
+}
+
+function drawBoard() {
+  console.log(board.tiles)
+  for (let y = 0; y < board.tiles.length; y++) {
+    for (let x = 0; x < board.tiles[y].length; x++) {
+      if (board.tiles[y][x]) {
+        console.log(board.tiles[y][x])
+        drawImage(board.tiles[y][x], x * board.tileSize, y * board.tileSize)
+      }
+    }
+  }
 }
