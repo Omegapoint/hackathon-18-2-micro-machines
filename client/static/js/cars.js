@@ -6,7 +6,7 @@ class Car {
     this.rotation = 0
     this.speed = 0
     this.turn = 0.1
-    this.maxSpeed = 30
+    this.maxSpeed = 5
     this.brake = 3
 
     this.image = new Image()

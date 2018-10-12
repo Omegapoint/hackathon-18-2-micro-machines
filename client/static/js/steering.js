@@ -55,7 +55,7 @@ function updateVelocity() {
 
 function drive() {
   if (up) {
-    myCar.speed++
+    myCar.speed += .1
     myCar.speed = myCar.speed > myCar.maxSpeed ? myCar.maxSpeed : myCar.speed
   }
 

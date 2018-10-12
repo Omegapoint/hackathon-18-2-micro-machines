@@ -45,7 +45,7 @@ function updateOtherScores(scores) {
 
 function sendPosition() {
   const request_object = {
-    msg_type: TYPE_POSITION,
+    ype: TYPE_POSITION,
     id: myCar.id,
     x: myCar.x,
     y: myCar.y,
@@ -56,7 +56,7 @@ function sendPosition() {
 
 function sendScore() {
   const request_object = {
-    msg_type: TYPE_SCORE,
+    type: TYPE_SCORE,
     id: myCar.id,
     score: myCar.score,
   }

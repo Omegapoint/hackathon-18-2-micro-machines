@@ -50,7 +50,6 @@ function drawBoard() {
   for (let y = 0; y < board.tiles.length; y++) {
     for (let x = 0; x < board.tiles[y].length; x++) {
       if (board.tiles[y][x]) {
-        console.log(board.tiles[y][x])
         drawImage(board.tiles[y][x], x * board.tileSize, y * board.tileSize)
       }
     }
