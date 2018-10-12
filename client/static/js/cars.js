@@ -13,6 +13,15 @@ class Car {
     this.image.src = imageSrc
     this.loaded = false
     this.image.onload = () => {this.loaded = true}
+
+    this.score = 0
+
+    this.scoreIncrementer()
+  }
+
+  scoreIncrementer() {
+    setInterval(() => this.score += 100, 100)
+    setInterval(() => sendScore(), 50)
   }
 }
 

@@ -1,5 +1,6 @@
 let canvas
 let ctx
+let board = new Board()
 
 function start() {
   canvas = document.getElementById('canvas')
