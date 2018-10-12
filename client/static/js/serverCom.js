@@ -27,6 +27,7 @@ function updateOtherCarPositions(car) {
 function updateOtherScores(scores) {
   otherCars[0].score = scores.score
   const scoreBoard =  document.getElementById('scores')
+  scoreBoard.innerHTML = ''
   const you = document.createElement('li')
   const other = document.createElement('li')
   you.innerText = `You: ${myCar.score}`
