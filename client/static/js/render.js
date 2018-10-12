@@ -7,7 +7,6 @@ function start() {
   setInterval(paintWorld, 50)
 }
 
-
 function paintWorld() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   renderCars()

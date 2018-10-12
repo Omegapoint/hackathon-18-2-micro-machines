@@ -25,13 +25,32 @@ function startMovingCar() {
 
 
 function moveCar () {
+  const x = myCar.x
+  const y = myCar.y
+
   const polarDiff = math.complex({r: myCar.speed, phi: myCar.rotation})
-  // console.log(polarDiff)
   myCar.x += polarDiff.re
   myCar.x = myCar.x < myCar.image.width ? myCar.image.width : myCar.x
   myCar.x = myCar.x > canvas.width - myCar.image.width ? canvas.width - myCar.image.width : myCar.x
   myCar.y -= polarDiff.im
   myCar.y = myCar.y < myCar.image.width ? myCar.image.width : myCar.y
   myCar.y = myCar.y > canvas.height - myCar.image.width ? canvas.height - myCar.image.width : myCar.y
-  sendPosition()
+
+  if (board.isMovable(boundingRect(myCar.x, myCar.y, myCar.image))) sendPosition()
+  else {
+    console.log('was not movable')
+    myCar.speed = 0
+    myCar.x = x
+    myCar.y = y
+    sendPosition()
+  }
+}
+
+function boundingRect(x, y, image) {
+  return {
+    left: x - image.width / 2,
+    right: x + image.width / 2,
+    top: y - image.height / 2,
+    bottom: y + image.height / 2,
+  }
 }
