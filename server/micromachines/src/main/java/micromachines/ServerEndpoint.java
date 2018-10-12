@@ -44,10 +44,13 @@ public class ServerEndpoint {
     @OnClose
     public void onClose(Session session) throws IOException {
         System.out.println("onClose");
+        boolean wasRemoved = serverEndpoints.remove(this);
+        System.out.println("Removed endpoint, was it added? " + wasRemoved + ". # left: " + serverEndpoints.size());
     }
 
     @OnError
     public void onError(Session session, Throwable throwable) {
-        System.out.println("onError");
+        System.out.println("onError called. Cause:");
+        throwable.printStackTrace();
     }
 }
