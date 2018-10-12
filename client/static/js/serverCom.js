@@ -9,7 +9,7 @@ socket.addEventListener('open', function (event)  {
 
 // Listen for messages
 socket.addEventListener('message', function (event) {
-  const car = event.data.json()
+  const car = JSON.parse(event.data)
   otherCars[0].x = car.x
   otherCars[0].y = car.y
   otherCars[0].rotation = car.rotation

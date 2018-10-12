@@ -4,6 +4,10 @@ class Car {
     this.x = 0
     this.y = 0
     this.rotation = 0
+    this.speed = 0
+    this.turn = 0.1
+    this.maxSpeed = 30
+    this.brake = 3
 
     this.image = new Image()
     this.image.src = imageSrc
@@ -21,31 +25,13 @@ function startMovingCar() {
 
 
 function moveCar () {
-  myCar.x += xVelocity
-  if (myCar.x < 0) {
-    myCar.x = 0
-    xVelocity = 0
-  } else if (myCar.x > canvas.width) {
-    myCar.x = canvas.width
-    xVelocity = 0
-  }
-
-  myCar.y += yVelocity
-  if (myCar.y < 0) {
-    myCar.y = 0
-    yVelocity = 0
-  } else if (myCar.y > canvas.height) {
-    myCar.y = canvas.height
-    yVelocity = 0
-  }
-
-  myCar.rotation = getDirection(myCar, xVelocity, -yVelocity)
+  const polarDiff = math.complex({r: myCar.speed, phi: myCar.rotation})
+  console.log(polarDiff)
+  myCar.x += polarDiff.re
+  myCar.x = myCar.x < myCar.image.width ? myCar.image.width : myCar.x
+  myCar.x = myCar.x > canvas.width - myCar.image.width ? canvas.width - myCar.image.width : myCar.x
+  myCar.y -= polarDiff.im
+  myCar.y = myCar.y < myCar.image.width ? myCar.image.width : myCar.y
+  myCar.y = myCar.y > canvas.height - myCar.image.width ? canvas.height - myCar.image.width : myCar.y
   sendPosition()
-}
-
-function getDirection (car, xVelocity, yVelocity) {
-  if (xVelocity === 0 && yVelocity === 0) {
-    return car.rotation
-  }
-  return math.complex(xVelocity, yVelocity).arg()
 }
