@@ -92,7 +92,7 @@ public class ImageConverter
         Gson gson = new Gson();
 
         String json = gson.toJson(map);
-        json = json.replace("],", "],\n");
+        //json = json.replace("],", "],\n");
         //output.write(json);
         System.out.println(json);
         //output.close();
